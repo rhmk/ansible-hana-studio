@@ -30,4 +30,5 @@ sapcar: path to sapcar executable
 hana_client: path to previous downloaded SAP HANA Client
 hana_studio: path to previous downloaded SAP HANA Studio package
 
-
+You can set additional variables for defining the installation, e.g. you want to do a shared installation.
+Look in to the configuration files in the templates directory (roles/hana-studio/templates) to figure out which variables can be set in addition
