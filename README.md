@@ -24,9 +24,9 @@ You will find the packages at https://support.sap.com/swdc.
  - Download these components and make them accessible on the client, where you want to install HANA studio
 
 ## Define variables in the playbook
-
-sapcar=<path to sapcar executable>
-hana_client=<path to previous downloaded SAP HANA Client>
-hana_studio=<path to previous downloaded SAP HANA Studio package>
+[%hardbreaks]
+sapcar: path to sapcar executable
+hana_client: path to previous downloaded SAP HANA Client
+hana_studio: path to previous downloaded SAP HANA Studio package
 
 
