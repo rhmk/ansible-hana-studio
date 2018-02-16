@@ -11,6 +11,7 @@ To install HANA Studio on your Linux platform you need to download the following
  . SAPCAR to unpack the software
 
 You will find the packages at https://support.sap.com/swdc. 
+[square]
  * Click on *Access downloads* at *Support Packages & Patches*
  * Click on *H* for SAP HANA etc.
  * Click on *SAP HANA Platform Edition 2.0*
