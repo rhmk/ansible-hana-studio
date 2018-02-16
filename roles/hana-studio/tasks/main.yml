@@ -1,0 +1,63 @@
+---
+# tasks file for hana-studio
+#
+
+- name: Check for SAPCAR and Archives
+  stat:
+          path: "{{ item }}"
+          get_attributes: no
+          get_checksum: no
+          get_md5: no
+  register: file
+  failed_when: not file.stat.exists
+  with_items:
+          - "{{ sapcar }}"
+          - "{{ hana_client }}"
+          - "{{ hana_studio }}"
+
+- name: Ensure temporary installation directory is created
+  file:
+          path: /tmp/install
+          state: directory
+          mode: 0755
+
+- name: make sure  SAPCAR is executable 
+  file:
+          path: "{{ sapcar }}"
+          mode: 0755
+
+- name: unpack HANA Database Client and HANA Studio
+  shell: |
+     "{{ sapcar }}" -xf "{{ item }}"
+  args:
+      chdir: /tmp/install
+  register: unpack_sapcar
+  with_items:
+      - "{{ hana_client }}"
+      - "{{ hana_studio }}"
+
+- name: ensure Configurationfiles for unattended installation are copied
+  template:
+          src: "{{ item + '.j2' }}"
+          dest: /tmp/install/{{ item }}
+          mode: 0644
+  with_items:
+          - hana-client.conf
+          - hana-studio.conf
+
+- name: Ensure HANA Client is installed
+  shell: ./hdbinst --batch --configfile=../hana-client.conf
+  args:
+      chdir: /tmp/install/SAP_HANA_CLIENT
+  register: hana_client_install
+
+- name: Ensure HANA Studio is installed
+  shell: ./hdbinst --batch --configfile=../hana-studio.conf
+  args:
+      chdir: /tmp/install/SAP_HANA_STUDIO
+  register: hana_studio_install
+
+- name: Ensure temporary install directory is removed
+  file:
+          path: /tmp/install
+          state: absent

@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  remote_user: root
+
+  vars:
+          sapcar: /home/mkoch/bin/sapcar
+          hana_client: /home/mkoch/Downloads/SAP/HANA-Client-Software/IMDB_CLIENT20_002_36-80002082.SAR
+          hana_studio: /home/mkoch/Downloads/SAP/HANA-Client-Software/IMC_STUDIO2_223_0-80000321.SAR
+
+
+  roles:
+    - hana-studio

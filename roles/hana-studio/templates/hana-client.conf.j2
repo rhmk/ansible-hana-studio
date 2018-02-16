@@ -1,0 +1,14 @@
+
+[Client]
+
+# System ID
+sid={{ hana_client_sid | default('') }}
+
+# Mount point for shared client installations ( Default: '' ) for local install
+sapmnt={{ hana_client_shared | default('') }}
+
+# Installation Path ( Default: /usr/sap/hdbclient )
+path={{ hana_client_path | default('/usr/sap/hdbclient') }}
+
+# Host Name ( Default: t460.fritz.box )
+hostname={{ hana_client_hostname | default(ansible_fqdn) }}

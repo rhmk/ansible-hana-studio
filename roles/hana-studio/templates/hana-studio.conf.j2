@@ -1,0 +1,24 @@
+
+[Studio]
+
+# Target path to which SAP HANA Studio repository should be copied
+copy_repository={{ hana_studio_repository | default('') }}
+
+# Java Runtime ( Default:  )
+vm={{ hana_studio_jvm | default('') }}
+
+# Source path of SAP HANA Studio repository ( Default: file:/tmp/install/SAP_HANA_STUDIO/studio/repository )
+repository={{ hana_studio_repository | default('file:/tmp/install/SAP_HANA_STUDIO/studio/repository') }}
+
+# Installation Path ( Default: /usr/sap/hdbstudio )
+path={{ hana_studio_path | default('/usr/sap/hdbstudio') }}
+
+# Feature
+#  Index | Feature | Description
+#  ---------------------------------------------------------------------
+#  1     | all     | All features
+#  2     | admin   | SAP HANA Studio Administration ver. 2.3.31
+#  3     | appdev  | SAP HANA Studio Application Development ver. 2.3.31
+#  4     | dbdev   | SAP HANA Studio Database Development ver. 2.3.31
+
+features={{ hana_studio_features | default('admin') }}
